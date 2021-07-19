@@ -17,6 +17,7 @@ mongoose.connect(uri, {
 
 //converts req to json format
 app.use(express.json())
+
 //Routes
 app.use('/aliens', alienRouter)
 

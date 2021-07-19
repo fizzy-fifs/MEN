@@ -29,8 +29,39 @@ router.get('/', async(req, res) => {
   }
 })
 
+// Get an Alien by ID
+router.get('/:id', async(req, res) => {
+  try{
+    const alien = await Alien.findById(req.params.id)
+    res.json(alien)
+  }catch(err){
+    res.send('Error ' + err)
+  }
+})
 
+//Update an Alien by ID
+router.patch('/:id', async(req, res) => {
+  try{
+    const alien = await Alien.findById(req.params.id)
+    alien.name = req.body.name
+    alien.tech = req.body.tech
+    alien.sub = req.body.sub
+    const updatedAlien = await alien.save()
+    res.json(updatedAlien)
+  }catch(err){
+    res.send('Error ' + err)
+  }
+})
 
-
+//Delete an Alien by ID
+router.delete('/:id', async(req, res) => {
+  try{
+    const alien = await Alien.findById(req.params.id)
+    await alien.remove()
+    res.send('Alien Deleted')
+  }catch(err){
+    res.send('Error ' + err)
+  }
+})
 
 module.exports = router
