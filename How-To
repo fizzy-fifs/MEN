@@ -1,5 +1,6 @@
 'npm init' to create package.json file
 'npm install express' to install express
-require express and initialise app.js
-connect to MongoDB via mongoose
-create routers
+Require express and initialise app.js
+Create models/schema
+Create routers/controller
+Define routes
